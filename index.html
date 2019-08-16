@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Log in</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="flex-container">
+        <div class="Logo">
+            <img src="img/w-mercury-development.svg" />
+        </div>
+        <div class="loginBox">
+            <form id="form-auth">
+                <div class="form-window">
+                    <div class="login_text">Log in</div>
+                    <div class="input_box">
+                        <input id="email" type="email" class="textInput" placeholder="E-Mail" autofocus />
+                    </div>
+                    <div class="input_box_pass">
+                        <input id="password" type="password" class="textInput" placeholder="Password" />
+                    </div>
+                    <div id="error_msg hidden"></div>
+                    <div class="submit_btn_box">
+                        <button id="submit_btn" type="submit" class="submit_btn">Login</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
