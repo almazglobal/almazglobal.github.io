@@ -12,27 +12,44 @@
 
 <body>
     <div class="flex-container">
-        <div class="Logo">
+        <div class="logo">
             <img src="img/w-mercury-development.svg" />
         </div>
         <div class="loginBox">
             <form id="form-auth">
-                <div class="form-window">
-                    <div class="login_text">Log in</div>
-                    <div class="input_box">
-                        <input id="email" type="email" class="textInput" placeholder="E-Mail" autofocus />
-                    </div>
-                    <div class="input_box_pass">
-                        <input id="password" type="password" class="textInput" placeholder="Password" />
-                    </div>
-                    <div id="error_msg hidden"></div>
-                    <div class="submit_btn_box">
-                        <button id="submit_btn" type="submit" class="submit_btn">Login</button>
-                    </div>
-                </div>
+                <!-- Insert template  -->
             </form>
         </div>
     </div>
+
+    <template id="logout">
+        <div class="form-window">
+            <!-- Avatar user -->
+            <img class="avatar" src="img/abott@adorable.png" />
+            <!--Name user  -->
+            <div class="userName"></div>
+            <div class="submit_btn_box">
+                <button id="logout_btn" type="submit" class="submit_btn">Logout</button>
+            </div>
+        </div>
+    </template>
+
+    <template id="login">
+        <div class="form-window">
+            <div class="login_text">Log in</div>
+            <div class="input_box">
+                <input id="email" type="email" class="textInput" placeholder="E-Mail" autofocus />
+            </div>
+            <div class="input_box_pass">
+                <input id="password" type="password" class="textInput" placeholder="Password" />
+            </div>
+            <div class="error_msg hidden"></div>
+            <div class="submit_btn_box">
+                <button id="submit_btn" type="submit" class="submit_btn">Login</button>
+            </div>
+        </div>
+    </template>
+
     <script src="main.js"></script>
 </body>
 
