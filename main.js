@@ -2,7 +2,7 @@
 
 let form_auth = document.getElementById("form-auth");
 
-// Можно было проще реализовать, через свойство элемента формы авторизации - innerHTML.
+// Можно было проще реализовать: через свойство элемента формы авторизации - innerHTML.
 // Но это свойство в отношении безопасности не рекомендуется применять.
 
 let templateLogin = document.getElementById('login').content;
@@ -33,6 +33,7 @@ function validData() {
     if (!validEmail) {
         error_msg.classList.remove('hidden');
         error_msg.textContent = 'Invalid input E-Mail';
+        incorrectEmailPass();
         valid = false
     } else if (password_put.value.length === 0) {
         error_msg.classList.remove('hidden');
@@ -91,6 +92,7 @@ function successLogin(data) {
 function failLogin(error_code) {
     if (error_code === 400) {
         incorrectEmailPass();
+        error_msg.textContent = 'E-Mail or password is incorrect';
     } else if (error_code === 403) {
         error_msg.classList.remove('hidden');
         error_msg.textContent = '403: Forbidden';
@@ -110,8 +112,7 @@ function incorrectEmailPass() {
     email_put.addEventListener('click', function () {
         email_put.style.color = '#262626';
         email_put.style.borderColor = '#f1f1f1';
-    });
-    error_msg.textContent = 'E-Mail or password is incorrect';
+    });  
 }
 
 form_auth.appendChild(form_window);
