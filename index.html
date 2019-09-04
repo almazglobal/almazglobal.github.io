@@ -15,37 +15,39 @@
         <div class="logo">
             <img src="img/w-mercury-development.svg" />
         </div>
-        <div class="loginBox">
-            <form id="form-auth">
-                <!-- Insert template  -->
+        <div class="login-box">
+            <form class="auth-form">
+                <!-- Insert template -->
             </form>
         </div>
     </div>
 
     <template id="logout">
-        <div class="form-window">
+        <div class="auth-form__form-content">
             <!-- Avatar user -->
-            <img class="avatar" src="img/abott@adorable.png" />
-            <!--Name user  -->
-            <div class="userName"></div>
-            <div class="submit_btn_box">
-                <button id="logout_btn" type="submit" class="submit_btn">Logout</button>
+            <img class="auth-form__user-avatar" src="img/abott@adorable.png" />
+            <!--Name user -->
+            <div class="auth-form__user-name"></div>
+            <div class="submit-btn-box">
+                <button type="submit" class="auth-form__submit-btn auth-form__submit-btn_logout">Logout</button>
             </div>
         </div>
     </template>
 
     <template id="login">
-        <div class="form-window">
-            <div class="login_text">Log in</div>
-            <div class="input_box">
-                <input id="email" type="email" class="textInput" placeholder="E-Mail" autofocus />
+        <div class="auth-form__form-content">
+            <div class="auth-form__login-head-text">Log in</div>
+            <div class="input-box">
+                <input type="email" class="auth-form__text-input auth-form__text-input_email" placeholder="E-Mail"
+                    autofocus />
             </div>
-            <div class="input_box_pass">
-                <input id="password" type="password" class="textInput" placeholder="Password" />
+            <div class="input-box-pass">
+                <input type="password" class="auth-form__text-input auth-form__text-input_password"
+                    placeholder="Password" />
             </div>
-            <div class="error_msg hidden"></div>
-            <div class="submit_btn_box">
-                <button id="submit_btn" type="submit" class="submit_btn">Login</button>
+            <div class="auth-form__error-msg hidden"></div>
+            <div class="submit-btn-box">
+                <button type="submit" class="auth-form__submit-btn auth-form__submit-btn_login">Login</button>
             </div>
         </div>
     </template>

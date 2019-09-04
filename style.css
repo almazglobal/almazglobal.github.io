@@ -1,7 +1,26 @@
 @font-face {
-    font-family: Gotham;
-    src: url(font/GothaProBol.otf) format("opentype");
-}
+    font-family: 'Gotham';
+    src: url('font/GothamPro-Black.woff2') format('woff2'),
+         url('font/GothamPro-Black.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Gotham';
+    src: url('font/GothamPro-Medium.woff2') format('woff2'),
+         url('font/GothamPro-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Gotham';
+    src: url('font/GothamPro-Bold.woff2') format('woff2'),
+         url('font/GothamPro-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+  }
 
 body {
     background-image: url("img/background.jpg");
@@ -34,7 +53,7 @@ body {
     margin: auto;
 }
 
-.form-window {
+.auth-form__form-content {
     width: 100%;
     height: 100%;
     border-radius: 8px;
@@ -43,12 +62,12 @@ body {
     padding-top: 48px;
 }
 
-.loginBox {
+.login-box {
     width: 100%;
     padding: 20% 0;
 }
 
-.login_text {
+.auth-form__login-head-text {
     opacity: 0.8;
     font-family: Gotham;
     font-size: 24px;
@@ -61,9 +80,9 @@ body {
     color: #262626;
     width: 100%;
     margin-bottom: 48px;
-    }
+}
 
-.input_box {
+.input-box {
     width: auto;
     padding-bottom: 32px;
     padding-right: 33px;
@@ -71,13 +90,13 @@ body {
 
 }
 
-.input_box_pass {
+.input-box-pass {
     width: auto;
     padding-right: 33px;
     padding-left: 33px;
 }
 
-.submit_btn_box {
+.submit-btn-box {
     margin: auto;
     display: flex;
     text-align: center;
@@ -115,7 +134,7 @@ button:hover {
     color: #ed4159;
 }
 
-.submit_btn {
+.auth-form__submit-btn {
     width: 145px;
     height: 48px;
     border-radius: 100px;
@@ -135,7 +154,7 @@ button:hover {
     margin: 0 auto;
 }
 
-.textInput {
+.auth-form__text-input {
     width: 100%;
     height: 48px;
     padding-left: 10px;
@@ -164,7 +183,7 @@ button:hover {
     display: none;
 }
 
-.error_msg {
+.auth-form__error-msg {
     width: auto;
     margin: 0 33px;
     margin-top: 33px;
@@ -179,7 +198,7 @@ button:hover {
     box-sizing: border-box;
 }
 
-.avatar {
+.auth-form__user-avatar {
     width: 128px;
     height: 128px;
     border: solid 1px #979797;
@@ -189,7 +208,7 @@ button:hover {
     flex-direction: column;
 }
 
-.userName {
+.auth-form__user-name {
     width: auto;
     height: 19px;
     margin-bottom: 25px;

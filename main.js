@@ -1,29 +1,29 @@
 'use strict';
 
-let form_auth = document.getElementById("form-auth");
+let auth_form = document.querySelector(".auth-form");
 
 // Можно было проще реализовать: через свойство элемента формы авторизации - innerHTML.
 // Но это свойство в отношении безопасности не рекомендуется применять.
 
 let templateLogin = document.getElementById('login').content;
-let form_window = templateLogin.querySelector('.form-window');
-let error_msg = templateLogin.querySelector('.error_msg');
-let email_put = templateLogin.getElementById('email');
-let password_put = templateLogin.getElementById('password');
-let submit_btn = templateLogin.getElementById('submit_btn');
+let form_window = templateLogin.querySelector('.auth-form__form-content');
+let error_msg = templateLogin.querySelector('.auth-form__error-msg');
+let email_put = templateLogin.querySelector('.auth-form__text-input_email');
+let password_put = templateLogin.querySelector('.auth-form__text-input_password');
+let login_btn = templateLogin.querySelector('.auth-form__submit-btn_login');
 
 let templateLogout = document.getElementById('logout').content;
-let formLogoutTemplate = templateLogout.querySelector('.form-window');
-let avatar = templateLogout.querySelector('.avatar');
-let userName = templateLogout.querySelector('.userName');
-let logout_btn = templateLogout.getElementById('logout_btn');
+let formLogoutTemplate = templateLogout.querySelector('.auth-form__form-content');
+let userAvatar = templateLogout.querySelector('.auth-form__user-avatar');
+let userName = templateLogout.querySelector('.auth-form__user-name');
+let logout_btn = templateLogout.querySelector('.auth-form__submit-btn_logout');
 
 logout_btn.addEventListener('click', function () {
     email_put.value = '';
     password_put.value = '';
     error_msg.textContent = '';
     error_msg.classList.add('hidden');
-    form_auth.replaceChild(form_window, formLogoutTemplate);
+    auth_form.replaceChild(form_window, formLogoutTemplate);
 });
 
 function validData() {
@@ -33,7 +33,7 @@ function validData() {
     if (!validEmail) {
         error_msg.classList.remove('hidden');
         error_msg.textContent = 'Invalid input E-Mail';
-        incorrectEmailPass();
+        showIncorrectEmailPassMessage();
         valid = false
     } else if (password_put.value.length === 0) {
         error_msg.classList.remove('hidden');
@@ -43,16 +43,16 @@ function validData() {
     return valid;
 };
 
-submit_btn.addEventListener('click', function (evt) {
+login_btn.addEventListener('click', function (evt) {
     evt.preventDefault();
     let xhr = new XMLHttpRequest();
-    submit_btn.setAttribute("disabled", "disabled");
+    login_btn.setAttribute("disabled", "disabled");
     initXMLHttpRequest(xhr);
 
     if (validData()) {
-        request(xhr).then(successLogin).catch(failLogin);
+        getDataWithPostRequest(xhr).then(showElementForLoginSuccessfully).catch(showLoginFailedMessage);
     }
-    submit_btn.removeAttribute("disabled");
+    login_btn.removeAttribute("disabled");
 });
 
 function initXMLHttpRequest(xhr) {
@@ -61,7 +61,7 @@ function initXMLHttpRequest(xhr) {
     xhr.setRequestHeader("Content-type", "application/json");
 }
 
-function request(xhr) {
+function getDataWithPostRequest(xhr) {
     return new Promise(function (resolve, reject) {
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
@@ -82,16 +82,16 @@ function request(xhr) {
     });
 }
 
-function successLogin(data) {
-    let request = JSON.parse(data);
-    avatar.src = request.photoUrl;
-    userName.textContent = request.name;
-    form_auth.replaceChild(formLogoutTemplate, form_window);
+function showElementForLoginSuccessfully(data) {
+    let getDataWithPostRequest = JSON.parse(data);
+    userAvatar.src = getDataWithPostRequest.photoUrl;
+    userName.textContent = getDataWithPostRequest.name;
+    auth_form.replaceChild(formLogoutTemplate, form_window);
 }
 
-function failLogin(error_code) {
+function showLoginFailedMessage(error_code) {
     if (error_code === 400) {
-        incorrectEmailPass();
+        showIncorrectEmailPassMessage();
         error_msg.textContent = 'E-Mail or password is incorrect';
     } else if (error_code === 403) {
         error_msg.classList.remove('hidden');
@@ -105,14 +105,14 @@ function failLogin(error_code) {
     }
 }
 
-function incorrectEmailPass() {
+function showIncorrectEmailPassMessage() {
     error_msg.classList.remove('hidden');
     email_put.style.color = '#ed4159';
     email_put.style.borderColor = '#ed4159';
     email_put.addEventListener('click', function () {
         email_put.style.color = '#262626';
         email_put.style.borderColor = '#f1f1f1';
-    });  
+    });
 }
 
-form_auth.appendChild(form_window);
+auth_form.appendChild(form_window);
